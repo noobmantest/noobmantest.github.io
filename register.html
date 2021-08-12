@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>乐购</title>
+		<link rel="icon" href="img/demo.png" type="image/x-icon">
+		<link rel="shortcut icon" href="img/demo.png" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<script src="js/index.js"></script>
+		<style>
+			body {
+				margin: 0px auto;
+				text-align: center;
+				background-image: url(images/background3.jpg);
+				background-attachment: fixed;
+
+			}
+
+			.form {
+				width: 600px;
+				height: auto;
+				background-color: #f8f8f8;
+				border-color: #e7e7e7;
+				padding: 50px;
+				z-index: 12;
+				margin-top: 100px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			#register_form {
+				display: block;
+			}
+
+			.fa {
+				display: inline-block;
+				top: 27px;
+				left: 6px;
+				position: relative;
+				color: #ccc;
+			}
+
+			input[type="text"],
+			input[type="password"] {
+				padding-left: 26px;
+			}
+
+			#Layer1 {
+				background: url(img/reg_background.png)no-repeat;
+				background-size: 100%;
+			}
+
+			.header {
+				text-align: center;
+				font-family: 微软雅黑;
+				font-size: 20px;
+			}
+
+			.changeform {
+				margin-left: 20%;
+			}
+		</style>
+		<style>
+			.form-control {
+				width: 350px;
+				margin-top: 20px;
+				height: 40px;
+			}
+		</style>
+		<style>
+			.submit {
+				width: 300px;
+				height: 45px;
+				background: #ff6700;
+				color: #fff;
+				font-size: 22px;
+				font-weight: bold;
+				cursor: pointer;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="Layer1" style="position:absolute; left:0px; top:0px; width:100%; height:100%">
+
+
+			<div class="container" style="z-index: 11;">
+				<div class="form row">
+					<form class="form-horizontal col-sm-offset-3 col-md-offset-3 changeform" id="register_form"
+						method="post">
+						<div class="col-sm-9 col-md-9">
+							<div class="form-group header">LEGO注册页面</div>
+							<div class="form-group">
+								<i class="fa fa-user fa-lg"></i>
+								<input class="form-control required" type="text" placeholder="用户名" name="username"
+									autofocus="autofocus" maxlength="20" id="username" />
+							</div>
+							<div class="form-group">
+								<i class="fa fa-lock fa-lg"></i>
+								<input class="form-control required" type="text" placeholder="邮箱" name="email"
+									maxlength="20" id="email" />
+							</div>
+							<div class="form-group">
+								<i class="fa fa-lock fa-lg"></i>
+								<input class="form-control required" type="password" placeholder="密码" name="password"
+									maxlength="14" id="password1" />
+							</div>
+							<div class="form-group">
+								<i class="fa fa-lock fa-lg"></i>
+								<input class="form-control required" type="password" placeholder="重复输入密码"
+									name="password2" maxlength="14" id="password2" />
+							</div>
+
+							<div class="form-group">
+								<i class="fa fa-lock fa-lg"></i>
+								<select class="form-control required" placeholder="用户" name="type" id="role">
+									<option selected="selected" value="1">普通账户</option>
+									<option value="2">商家账户</option>
+								</select>
+							</div>
+							<div class="form-group" style="padding: 50px;">
+								<!-- <a href="login.html"> -->
+								<button type="button" onclick="check()" class="submit">注册</button>
+								<!-- </a> -->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="" style="position: absolute; color: blue; bottom: 100px; right: 100px;">
+			<p style="font-size: 20px;">数据2001姚嘉芯20200250026</p>
+		</div>
+	</body>
+	<script>
+		function check() {
+			var username = document.getElementById("username").value;
+			var password1 = document.getElementById("password1").value;
+			var password2 = document.getElementById("password2").value;
+			var email = document.getElementById("email").value;
+			var role = document.getElementById("role").value;
+			if(role==1){
+				role = "普通用户";
+			}else{
+				role = "管理员";
+			}
+			console.log(username);
+			console.log(password1);
+			console.log(password2);
+			console.log(email);
+			console.log(role);
+
+			var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/
+
+			if (password1 != password2) {
+				alert("两次输入密码不一致");
+			}else if (!reg.test(email)) {
+				alert("邮箱格式不正确！");
+			}else if (username != "" && password1 != "" && email != "" && role != "") {
+				alert("注册成功！\n用户名：" + username + "\nemail:" + email + "\n角色：" + role);
+			window.location.href = window.location.href.replace("register", "login");
+			}else{
+				alert("注册失败！");
+			}
+		}
+	</script>
+</html>
